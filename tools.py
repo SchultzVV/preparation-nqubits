@@ -2,6 +2,8 @@ import numpy as np
 import math
 from scipy.linalg import lapack
 from src.rdmg import rdm_ginibre
+import sys
+from qiskit import QuantumRegister,ClassicalRegister,QuantumCircuit
 
 def get_abs_lambda(rho):
 
@@ -14,8 +16,7 @@ def get_abs_lambda(rho):
         #rho += w[i] * np.outer(u[:, i], u[:, i].conj()) # se precisar do rho
         psi += math.sqrt(w[i])*np.eye(n)[:, i]
     return psi, u
-import sys
-from qiskit import QuantumRegister,ClassicalRegister,QuantumCircuit
+
 
 def get_psi_circuit(psi):
     n_qubits = np.shape(psi)[0]-1
